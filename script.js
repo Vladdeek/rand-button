@@ -1,104 +1,65 @@
-
-let maxrandy =630;
-let maxrandx =1363;
-let randtext;
+const phrases = [
+	'А может все-таки да?',
+	'Почему бы и нет?',
+	'Так мы едем катать?',
+	'Да ну, серьезно?',
+	'Ну давай же!',
+	'Точно нет?',
+	'Сомневаешься?',
+	'Неужели нет?',
+	'А вдруг?',
+	'Подумай еще раз!',
+	'Точно-так-то?',
+	'Может передумаешь?',
+	'Уверен?',
+	'Ну пожалуйста!',
+	'Последний шанс!',
+	'На самом деле хочешь нет?',
+	'Неужели нет?',
+	'Ой, ну давай!',
+	'А если да?',
+	'Ну же, давай!',
+	'Пидора ответ!',
+	'Что? Не слышу',
+]
 
 function Rand() {
-	 var xrand = Math.floor(Math.random() * maxrandy) + 1;
-	 console.log("X - ", xrand);
-	 var yrand = Math.floor(Math.random() * maxrandx) + 1;
-	console.log("Y - ", yrand);
-	var randtextid = Math.floor(Math.random() * 21) + 1;
+	// Установите границы в зависимости от устройства
+	let maxrandy = window.innerHeight - 100 // высота экрана минус 100 пикселей для кнопки
+	let maxrandx = window.innerWidth - 100 // ширина экрана минус 100 пикселей для кнопки
 
-	const nbutton = document.querySelector('.nbutton');
-	const ybutton = document.querySelector('.ybutton');
+	var xrand = Math.floor(Math.random() * maxrandy)
+	console.log('X - ', xrand)
+	var yrand = Math.floor(Math.random() * maxrandx)
+	console.log('Y - ', yrand)
 
-	ybutton.style.left = 683 + 'px';
+	const nbutton = document.querySelector('.nbutton')
+	const ybutton = document.querySelector('.ybutton')
 
-	nbutton.style.top = xrand + 'px';
-	nbutton.style.left = yrand + 'px';
+	// Установите фиксированное значение для ybutton, если это необходимо
+	ybutton.style.transform = 'translateX(0px)' // Центрирование кнопки
 
-	 switch (randtextid) {
-      case 0:
-	    randtext = "А может все-таки да?";
-	    break;
-	  case 1:
-	    randtext = "Почему бы и нет?";
-	    break;
-	  case 2:
-	    randtext = "Так мы едем катать?";
-	    break;
-	  case 3:
-	    randtext = "Да ну, серьезно?";
-	    break;
-	  case 4:
-	    randtext = "Ну давай же!";
-	    break;
-	  case 5:
-	    randtext = "Точно нет?";
-	    break;
-	  case 6:
-	    randtext = "Сомневаешься?";
-	    break;
-	  case 7:
-	    randtext = "Неужели нет?";
-	    break;
-	  case 8:
-	    randtext = "А вдруг?";
-	    break;
-	  case 9:
-	    randtext = "Подумай еще раз!";
-	    break;
-	  case 10:
-	    randtext = "Точно-так-то?";
-	    break;
-	  case 11:
-	    randtext = "Может передумаешь?";
-	    break;
-	  case 12:
-	    randtext = "Уверен?";
-	    break;
-	  case 13:
-	    randtext = "Ну пожалуйста!";
-	    break;
-	  case 14:
-	    randtext = "Последний шанс!";
-	    break;
-	  case 15:
-	    randtext = "На самом деле хочешь нет?";
-	    break;
-	  case 16:
-	    randtext = "Неужели нет?";
-	    break;
-	  case 17:
-	    randtext = "Ой, ну давай!";
-	    break;
-	  case 18:
-	    randtext = "А если да?";
-	    break;
-	  case 19:
-	    randtext = "Ну же, давай!";
-	    break;
-	  case 20:
-	  	randtext = "Пидора ответ!"
-	  	break;
-	  case 21:
-	  	randtext = "Что? Не слышу"
-	  	break;
-     }
-     var text = document.getElementById('Text');
- 	 text.innerHTML = randtext;
+	nbutton.style.top = xrand + 'px'
+	nbutton.style.left = yrand + 'px'
+
+	// Выбор случайной фразы из массива
+	const randtext = phrases[Math.floor(Math.random() * phrases.length)]
+
+	var text = document.getElementById('Text')
+	text.innerHTML = randtext
 }
-function Yes(){
-	var text = document.getElementById('Text');
- 	text.innerHTML = "Ура, поехали!)";
 
- 	const nbutton = document.querySelector('.nbutton');
- 	const ybutton = document.querySelector('.ybutton');
+function Yes() {
+	var text = document.getElementById('Text')
+	text.innerHTML = 'Ура, поехали!)'
 
-	nbutton.style.display = "none";
+	const nbutton = document.querySelector('.nbutton')
+	const ybutton = document.querySelector('.ybutton')
+
+	nbutton.style.display = 'none'
+	ybutton.style.transform = 'translateX(0px)' // Центрирование кнопки
 
 	ybutton.addEventListener('click', () => {
-		text.innerHTML = "Я уже понял, подожди собираюсь!";
-	});
- }
+		text.innerHTML = 'Я уже понял, подожди собираюсь!'
+	})
+}
