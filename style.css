@@ -67,11 +67,21 @@ p {
 	transform: translateX(45px);
 }
 
-.ybutton:hover,
-.nbutton:hover {
-	background: #2ee59d;
-	box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
-	color: white;
+@media (hover: hover) {
+	.ybutton:hover,
+	.nbutton:hover {
+		background: #2ee59d;
+		box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
+		color: white;
+	}
+}
+@media (hover: none) {
+	.ybutton:active,
+	.nbutton:active {
+		background: #2ee59d;
+		box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
+		color: white;
+	}
 }
 
 /* Mobile responsive adjustments */
