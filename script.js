@@ -24,7 +24,6 @@ const phrases = [
 ]
 
 function Rand() {
-	// Установите границы в зависимости от устройства
 	let maxrandy = window.innerHeight - 100 // высота экрана минус 100 пикселей для кнопки
 	let maxrandx = window.innerWidth - 100 // ширина экрана минус 100 пикселей для кнопки
 
@@ -36,15 +35,12 @@ function Rand() {
 	const nbutton = document.querySelector('.nbutton')
 	const ybutton = document.querySelector('.ybutton')
 
-	// Установите фиксированное значение для ybutton, если это необходимо
 	ybutton.style.transform = 'translateX(0px)' // Центрирование кнопки
 
 	nbutton.style.top = xrand + 'px'
 	nbutton.style.left = yrand + 'px'
 
-	// Выбор случайной фразы из массива
 	const randtext = phrases[Math.floor(Math.random() * phrases.length)]
-
 	var text = document.getElementById('Text')
 	text.innerHTML = randtext
 }
@@ -57,9 +53,22 @@ function Yes() {
 	const ybutton = document.querySelector('.ybutton')
 
 	nbutton.style.display = 'none'
-	ybutton.style.transform = 'translateX(0px)' // Центрирование кнопки
+	ybutton.style.transform = 'translateX(0px)'
 
 	ybutton.addEventListener('click', () => {
 		text.innerHTML = 'Я уже понял, подожди собираюсь!'
 	})
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+	const nbutton = document.querySelector('.nbutton')
+
+	// Check if the device is touch-enabled
+	if ('ontouchstart' in window) {
+		// Mobile device: use touch event
+		nbutton.addEventListener('touchstart', Rand)
+	} else {
+		// Desktop: use hover event
+		nbutton.addEventListener('mouseover', Rand)
+	}
+})
