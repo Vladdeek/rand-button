@@ -1,7 +1,7 @@
 const phrases = [
 	'А может все-таки да?',
 	'Почему бы и нет?',
-	'Так мы едем катать?',
+	'Так да или нет?',
 	'Да ну, серьезно?',
 	'Ну давай же!',
 	'Точно нет?',
@@ -14,7 +14,6 @@ const phrases = [
 	'Уверен?',
 	'Ну пожалуйста!',
 	'Последний шанс!',
-	'На самом деле хочешь нет?',
 	'Неужели нет?',
 	'Ой, ну давай!',
 	'А если да?',
@@ -47,7 +46,7 @@ function Rand() {
 
 function Yes() {
 	var text = document.getElementById('Text')
-	text.innerHTML = 'Ура, поехали!)'
+	text.innerHTML = 'понял'
 
 	const nbutton = document.querySelector('.nbutton')
 	const ybutton = document.querySelector('.ybutton')
@@ -56,7 +55,7 @@ function Yes() {
 	ybutton.style.transform = 'translateX(0px)'
 
 	ybutton.addEventListener('click', () => {
-		text.innerHTML = 'Я уже понял, подожди собираюсь!'
+		text.innerHTML = 'Я уже понял'
 	})
 }
 
